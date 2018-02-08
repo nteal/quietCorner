@@ -1,0 +1,21 @@
+{
+  "name": "quietCorner",
+  "homepage": "https://github.com/nteal/immersion-2018-01-greenfield",
+  "authors": [
+    "Jay Kindell <jaykindell@gmail.com>", "Erik McCoy <tknbnola@gmail.com>", "Nicholas Teal <nteal15@gmail.com>"
+  ],
+  "description": "a way to get away",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.9"
+  }
+}
