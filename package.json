@@ -12,7 +12,9 @@
     "url": "git+https://github.com/nteal/immersion-2018-01-greenfield.git"
   },
   "contributors": [
-    "Jay Kindell <jaykindell@gmail.com>", "Erik McCoy <tknbnola@gmail.com>", "Nicholas Teal <nteal15@gmail.com>"
+    "Jay Kindell <jaykindell@gmail.com>",
+    "Erik McCoy <tknbnola@gmail.com>",
+    "Nicholas Teal <nteal15@gmail.com>"
   ],
   "license": "ISC",
   "bugs": {
@@ -22,6 +24,7 @@
   "devDependencies": {},
   "dependencies": {
     "angular": "^1.6.9",
+    "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "mysql2": "^1.5.2",
     "nodemon": "^1.14.12",
