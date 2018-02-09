@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
-const config = require('../config');
-
+require('dotenv').config();
 
 const HOST = 'localhost';
 
