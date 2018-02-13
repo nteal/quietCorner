@@ -14,15 +14,12 @@ const sequelize = new Sequelize('nola_events', 'root', process.env.DBPASS, {
 // map Event to event table:
 const Event = sequelize.define('event', {
   address: Sequelize.STRING,
-  // use float to store number with 6 digits before decimal (sequelize requires) and 6 after decimal
-  // - good within inches
-  lat: Sequelize.DOUBLE(7, 7),
-  // use float to store number with 6 digits before decimal (sequelize requires) and 6 after decimal
-  // - good within inches
-  long: Sequelize.DOUBLE(7, 7),
+  //  used double to fit full double, found emperically
+  lat: Sequelize.DOUBLE,
+  //  used double to fit full double, found emperically
+  long: Sequelize.DOUBLE,
   venue: Sequelize.TEXT,
-  // date: Sequelize.DATE,
-  // "date": "2018-02-12 20-46-15",
+  date: Sequelize.DATE,
   name: Sequelize.STRING,
   description: Sequelize.TEXT,
 });
@@ -31,22 +28,30 @@ const Event = sequelize.define('event', {
 Event.sync();
 
 // create function to insert into table
-
-// create function to delete from table
-
-// create function to query from table by date
-
-
-// basic code to check if sequelize connected correctly
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('\n~~~~~~Connection has been established successfully.~~~~~~~\n');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+// returns a promise, access new event with param in `then` phrase
+// input type should be an object like:
+/**
+{
+  address: string (anything less than 255 chars),
+  lat: float(12.123456),
+  long: float(123.123456),
+  venue: string(can hold many characters),
+  date: string(yyyy-mm-dd hh:mm:ss),
+  name: string(255 chars),
+  description: string(many chars)
+}
+ */
+const addEvent = ({ address, lat, long, venue, date, name, description }) => {
+  const latFloat = parseFloat(lat);
+  const longFloat = parseFloat(long);
+  return Event.create({
+    address,
+    lat: latFloat,
+    long: longFloat,
+    venue,
+    date,
+    name,
+    description,
   });
-
-// mainly used to check for connection
-exports.seq = sequelize;
+};
 exports.addEvent = addEvent;
