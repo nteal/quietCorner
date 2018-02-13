@@ -54,4 +54,22 @@ const addEvent = ({ address, lat, long, venue, date, name, description }) => {
     description,
   });
 };
+
+// create function to query all events in table
+//TODO: organize by date?
+const findAll = (() => Event.findAll());
+
+
+// basic code to check if sequelize connected correctly
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('\n~~~~~~Connection has been established successfully.~~~~~~~\n');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+
+exports.findAll = findAll;
 exports.addEvent = addEvent;
