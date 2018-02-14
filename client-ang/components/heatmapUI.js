@@ -6,7 +6,7 @@ angular.module('app')
     controller() {
       // make datepicker
       const heatUiMod = this;
-      this.selectDate = function (newDate) {
+      this.selectDate = (newDate) => {
         const selectedDate = new Date(newDate);
         // update app's selectedDate:
         this.updateAppDate(selectedDate);
