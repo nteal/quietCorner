@@ -1,2 +1,4 @@
 <h2>recommends</h2>
-<h3>put recommendations here</h3>
+<div ng-repeat="recommendation in $ctrl.recommendsArr">
+  <recommend image="recommendation.image" name="recommendation.name" description="recommendation.description"></recommend>
+</div>
