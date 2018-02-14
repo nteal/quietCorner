@@ -1,2 +1,2 @@
 // create app module to use for angular
-angular.module('app', []);
+angular.module('app', ['720kb.datepicker']);
