@@ -1,4 +1,4 @@
-<h2>recommends</h2>
-<div ng-repeat="recommendation in $ctrl.recommendsArr">
-  <recommend image="recommendation.image" name="recommendation.name" description="recommendation.description"></recommend>
+<div class="su-row">
+  <h2>recommends</h2>
+  <recommend ng-repeat="recommendation in $ctrl.recommendsArr" class="su-col-2" image="recommendation.image" name="recommendation.name" description="recommendation.description"></recommend>
 </div>

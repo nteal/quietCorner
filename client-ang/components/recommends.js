@@ -21,7 +21,7 @@ angular.module('app')
           //   .catch((err) => { console.log('sorry, got an error trying to get the recommendations :/'); });
 
           // TODO: delete following two lines:
-          this.recommendsArr = dummyData;
+          this.recommendsArr = dummyData.slice(0, 3);
           console.log(recommendsMod.selectedDate);
         } else {
           console.log('looks like your selected date is not a date :/');
