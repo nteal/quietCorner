@@ -6,26 +6,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Quiet Corner</title>
   <script src="bower_components/angular/angular.js"></script>
-  <!-- suave dependencies: -->
-  <link href="bower_components/Suave UI/dist/styles.min.css" rel="stylesheet" />
-  <script src="bower_components/Suave UI/dist/app.min.js"></script>
+  
   <!-- 720kb datepicker dependencies: -->
   <script src="bower_components/angularjs-datepicker/src/js/angular-datepicker.js"></script>
   <link href="bower_components/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
 
+  <!-- suave dependencies: -->
+  <link href="bower_components/Suave UI/dist/styles.min.css" rel="stylesheet" />
+  <script src="bower_components/Suave UI/dist/app.min.js"></script>
+
 </head>
-<body>
+<body su-grid>
   <div ng-app="app">
     <app/>
   </div>
   <script src="index.js"></script>
   <script src="dummyData.js"></script>
-  <script src="components/app.js"></script>
   <script src="components/banner.js"></script>
   <script src="components/heatmapContainer.js"></script>
   <script src="components/heatmap.js"></script>
   <script src="components/heatmapUI.js"></script>
   <script src="components/recommends.js"></script>
+  <script src="components/app.js"></script>
   <script src="components/recommend.js"></script>
 </body>
 </html>

@@ -1,5 +1,13 @@
-<div class="su-row" style="text-align: center;">
-    <h2>heatmap container</h2>
-  <heatmap selected-date="$ctrl.selectedDate" class="su-col-edge-3"></heatmap>
-  <heatmap-ui update-app-date="$ctrl.updateAppDate" class="su-col-edge-3"></heatmap-ui>
+<div class="su-row su-c">
+  <h2>heatmap container</h2>
+  <div class="su-col-edge-3">
+    <div class="su-box">
+      <heatmap selected-date="$ctrl.selectedDate"></heatmap>
+    </div>
+  </div>
+  <div class="su-col-edge-3">
+    <div class="su-box">
+      <heatmap-ui update-app-date="$ctrl.updateAppDate"></heatmap-ui>
+    </div>
+  </div>
 </div>
