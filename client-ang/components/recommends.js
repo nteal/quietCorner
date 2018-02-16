@@ -10,6 +10,8 @@ angular.module('app')
       this.image = '';
       this.description = '';
       this.recommendsArr = [];
+
+      // make http request whenever selectedDate is updated
       $scope.$watch('$ctrl.selectedDate', () => {
         if (Object.prototype.toString.call(recommendsMod.selectedDate) === '[object Date]') {
           // TODO: uncomment following lines, update endpoint, and use response data correctly in `then` statement
