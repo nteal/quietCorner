@@ -1,13 +1,24 @@
 const express = require('express');
+// const bodyParser = require('body-parser');
 const path = require('path');
 const seq = require('../db/index');
+const helpers = require('../api-helpers/helpers');
 
 // set PORT to correct port to listen to
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+// app.use(bodyParser(JSON));
+
 // serve client-ang/index.html on initial page load
 app.use(express.static('client-ang'));
+
+
+app.get('/yelps', (req, res) => {
+  helpers.getYelpEvents(new Date());
+  console.log(res);
+  // res.send('we in ger');
+});
 
 
 // listen to PORT, either environment var or 3000
