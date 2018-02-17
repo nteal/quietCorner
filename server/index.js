@@ -21,7 +21,11 @@ app.use(bodyParser.json());
 app.use(express.static('client-ang'));
 
 // route to load points from db for heatmap
-app.post('/', (req, res) => {});
+app.post('/', (req, res) => {
+  const date = req.body.date;
+  console.log(date); // ok
+  res.send(new Date(date));
+});
 
 // route for yelp api call
 // helpers format & add to db
