@@ -18,10 +18,11 @@ const Event = sequelize.define('event', {
   lat: Sequelize.DOUBLE,
   //  used double to fit full double, found emperically
   long: Sequelize.DOUBLE,
-  venue: Sequelize.TEXT,
   date: Sequelize.DATE,
   name: Sequelize.STRING,
   description: Sequelize.TEXT,
+  num_people: Sequelize.INTEGER,
+  img_url: Sequelize.STRING,
 });
 
 const { Op } = Sequelize;
@@ -38,10 +39,11 @@ Event.sync();
   address: string (anything less than 255 chars),
   lat: float(##.######),
   long: float(###.######),
-  venue: string(can hold many characters),
   date: string(yyyy-mm-dd hh:mm:ss),
   name: string(255 chars),
-  description: string(many chars)
+  description: string(many chars),
+  num_people: int,
+  img_url: string(255 chars)
 }
  */
 const addEvent = eventObj => Event.create(eventObj);
