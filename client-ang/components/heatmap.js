@@ -5,7 +5,7 @@ angular.module('app')
     },
     controller($scope, $http, $sce) {
       const heatmap = this;
-      this.heatmap = $sce.trustAsHtml('<h3>put heatmap here</h3>');
+      this.heatmap = $sce.trustAsHtml('<h3>put heatmap here</h3><h3>put heatmap here</h3><h3>put heatmap here</h3><h3>put heatmap here</h3>');
       $scope.$watch('$ctrl.selectedDate', () => {
         if (Object.prototype.toString.call(heatmap.selectedDate) === '[object Date]') {
           // TODO: uncomment following lines, update endpoint, and use response data correctly in `then` statement
