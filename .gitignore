@@ -8,3 +8,6 @@ config.js
 
 build/
 dist/
+
+#ignored because jay's is different from yours
+.eslintrc.js

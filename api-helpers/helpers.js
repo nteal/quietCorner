@@ -3,7 +3,6 @@ const request = require('request');
 // const converter = require('xml-js');
 const db = require('../db/index.js');
 
-
 // {
 //   address: string(anything less than 255 chars),
 //     lat: float(##.######),
@@ -31,15 +30,25 @@ const songkickFormatForDatabase = (resultArray) => {
   });
 };
 
-const getSongkickEvents = (date) => {
+const getSongkickEvents = () => {
+  const now = Date.now();
+  const date = new Date(now);
+  const day = date.getUTCDate();
+  let month = date.getUTCMonth();
+  if (month.length = 1) {
+    month = `0${month}`;
+  }
+  const year = date.getUTCFullYear();
+  // console.log(`${year}-${month}-${day}`); // ok, YYYY-MM-DD
+
   const skOptions = {
     method: 'GET',
     url: 'http://api.songkick.com/api/3.0/events.json',
     qs: {
-      apikey: 'apvszgjjkV8KDNVN',
+      apikey: `${process.env.SONGKICK_API_KEY}`,
       location: 'sk:11772',
-      min_date: '2018-02-16',
-      max_date: '2018-02-18',
+      min_date: `${year}-${month}-${day}`,
+      max_date: `${year}-${month}-${day}`,
     },
     headers: {
       'Cache-Control': 'no-cache',
@@ -49,8 +58,10 @@ const getSongkickEvents = (date) => {
   request(skOptions, (error, response, body) => {
     if (error) throw new Error(error);
     const sParsed = JSON.parse(body);
-    // console.log(sParsed.resultsPage.results.event); // there's your array
-    songkickFormatForDatabase(sParsed.resultsPage.results.event); // there's your array
+    // console.log(sParsed);
+    if (sParsed.resultsPage.results.event) {
+      songkickFormatForDatabase(sParsed.resultsPage.results.event); // there's your array
+    }
   });
 };
 
@@ -78,7 +89,7 @@ const getYelpEvents = () => {
     qs:
       {
         location: 'neworleans,la',
-        limit: '5',
+        limit: '15',
         sort_on: 'time_start',
         sort_by: 'desc',
         start_date: Math.floor(Date.now() / 1000),
@@ -93,7 +104,9 @@ const getYelpEvents = () => {
     if (error) throw new Error(error);
     const parsedBody = JSON.parse(body);
     console.log(parsedBody);
-    yelpFormatForDatabase(parsedBody.events);
+    if (parsedBody.events.length) {
+      yelpFormatForDatabase(parsedBody.events);
+    }
   });
 };
 

@@ -26,14 +26,14 @@ app.post('/', (req, res) => {});
 // route for yelp api call
 // helpers format & add to db
 app.get('/yelps', (req, res) => {
-  helpers.getYelpEvents(new Date());
+  helpers.getYelpEvents();
   res.header(200).send('ok, added yelps');
 });
 
 // route for songkick api call
 // helpers format & add to db
 app.get('/songkicks', (req, res) => {
-  helpers.getSongkickEvents(new Date());
+  helpers.getSongkickEvents();
   res.header(200).send('ok, added kix');
 });
 
