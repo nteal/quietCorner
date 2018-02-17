@@ -1,6 +1,6 @@
 require('dotenv').config();
 const request = require('request');
-
+// const converter = require('xml-js');
 const db = require('../db/index.js');
 
 
@@ -16,26 +16,41 @@ const db = require('../db/index.js');
 //       *****don't forget to add image url. eventObj.image_url****** DONE
 // }
 
-const getEventfulEvents = (date) => {
-  const options = {
+
+const songkickFormatForDatabase = (resultArray) => {
+  resultArray.forEach((event) => {
+    const formattedEvent = {
+      lat: event.venue.lat,
+      long: event.venue.lng,
+      date: event.start.date,
+      name: event.displayName,
+      description: event.type,
+      num_people: event.popularity * 100,
+    };
+    db.addEvent(formattedEvent);
+  });
+};
+
+const getSongkickEvents = (date) => {
+  const skOptions = {
     method: 'GET',
-    url: 'http://api.eventful.com/rest/events/search',
-    qs:
-      {
-        location: 'new%20orleans,%20la',
-        date: 'Today',
-        app_key: 'kJPdZJwbJBPj6NhX',
-      },
-    headers:
-      {
-        'Cache-Control': 'no-cache',
-      },
+    url: 'http://api.songkick.com/api/3.0/events.json',
+    qs: {
+      apikey: 'apvszgjjkV8KDNVN',
+      location: 'sk:11772',
+      min_date: '2018-02-16',
+      max_date: '2018-02-18',
+    },
+    headers: {
+      'Cache-Control': 'no-cache',
+    },
   };
 
-  request(options, (error, response, body) => {
+  request(skOptions, (error, response, body) => {
     if (error) throw new Error(error);
-
-    console.log(body);
+    const sParsed = JSON.parse(body);
+    // console.log(sParsed.resultsPage.results.event); // there's your array
+    songkickFormatForDatabase(sParsed.resultsPage.results.event); // there's your array
   });
 };
 
@@ -49,6 +64,7 @@ const yelpFormatForDatabase = (resultArray) => {
       name: eventObj.name,
       description: eventObj.description,
       image_url: eventObj.image_url,
+      num_people: eventObj.attending_count,
     };
     db.addEvent(formattedObj);
   });
@@ -81,3 +97,4 @@ const getYelpEvents = (date) => {
 };
 
 module.exports.getYelpEvents = getYelpEvents;
+module.exports.getSongkickEvents = getSongkickEvents;
