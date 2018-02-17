@@ -70,7 +70,7 @@ const yelpFormatForDatabase = (resultArray) => {
   });
 };
 
-const getYelpEvents = (date) => {
+const getYelpEvents = () => {
   // console.log(process.env.YELP_API_KEY); // ok
   const options = {
     method: 'GET',
@@ -81,7 +81,7 @@ const getYelpEvents = (date) => {
         limit: '5',
         sort_on: 'time_start',
         sort_by: 'desc',
-        start_date: 1518814951,
+        start_date: Math.floor(Date.now() / 1000),
       },
     headers:
       {
@@ -92,6 +92,7 @@ const getYelpEvents = (date) => {
   request(options, (error, response, body) => {
     if (error) throw new Error(error);
     const parsedBody = JSON.parse(body);
+    console.log(parsedBody);
     yelpFormatForDatabase(parsedBody.events);
   });
 };
