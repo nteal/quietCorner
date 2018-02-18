@@ -9,7 +9,7 @@ angular.module('app')
       $scope.$watch('$ctrl.selectedDate', () => {
         if (Object.prototype.toString.call(heatmap.selectedDate) === '[object Date]') {
           // TODO: uncomment following lines, update endpoint, and use response data correctly in `then` statement
-          // $http.post('/heatmap', { body: { date: heatmap.selectedDate } })
+          // $http.post('/heatmap', { date: heatmap.selectedDate })
           //   .then((response) => {
           //     heatmap.heatmap = $sce.trustAsHtml(response.data);
           //   })

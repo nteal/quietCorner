@@ -19,7 +19,7 @@ angular.module('app')
       $scope.$watch('$ctrl.selectedDate', () => {
         if (Object.prototype.toString.call(recommendsMod.selectedDate) === '[object Date]') {
           // TODO: uncomment following lines, update endpoint, and use response data correctly in `then` statement
-          // $http.post('/recommendations', { body: { date: recommendsMod.selectedDate } })
+          // $http.post('/recommendations', { date: recommendsMod.selectedDate })
           //   // currently expecting response to give back array of objs
           //   // expecting objs to have name, description, and image url for each event
           //   // need to update recommendsMod.recommendsArr to be the array of objs you get back
