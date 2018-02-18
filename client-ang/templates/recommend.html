@@ -1,7 +1,10 @@
-<div>
-  <div class="su-frame">
-    <img ng-src="{{$ctrl.image}}" width="50" height="50">
-    <h5>{{$ctrl.name}}</h5>
+<div class="su-frame" id="rec" style="overflow: auto; text-align: left">
+  <div class="img-container" style="width:100%; max-height:200px; overflow:hidden">
+    <img ng-src="{{$ctrl.image}}" style="width:100%;  height:auto">
+  </div>
+  <h1>Event: {{$ctrl.name}}</h1>
+  <h3>Description: </h3>
+  <div style="overflow: auto; height: 150px">
     <p>{{$ctrl.description}}</p>
   </div>
 </div>

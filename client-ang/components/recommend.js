@@ -5,6 +5,6 @@ angular.module('app')
       name: '<',
       description: '<',
     },
-    controller: () => {},
+    controller() {},
     templateUrl: 'templates/recommend.html',
   });
