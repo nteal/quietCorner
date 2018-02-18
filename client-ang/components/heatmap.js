@@ -11,6 +11,7 @@ angular.module('app')
           // TODO: uncomment following lines, update endpoint, and use response data correctly in `then` statement
           // $http.post('/heatmap', { date: heatmap.selectedDate })
           //   .then((response) => {
+          //     console.log(response.data);
           //     heatmap.heatmap = $sce.trustAsHtml(response.data);
           //   })
           //   .catch((err) => { console.log('sorry, got an error trying to get the heat map :/'); });
