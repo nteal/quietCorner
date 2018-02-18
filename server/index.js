@@ -29,7 +29,7 @@ app.post('/heatmap', (req, res) => {
   const date = `${input[0].slice(1)} ${time}`;
   console.log(date); // YYYY-MM-DD 00:00:00
 
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!1', seq.fetchSingleDate(date));
+  seq.fetchAll(date).then(result => res.send(result));
 
   // res.send(date);
 });
