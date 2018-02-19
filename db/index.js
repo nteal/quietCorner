@@ -80,12 +80,33 @@ const fetchSingleDate = (date) => {
   const nextDate = moment(date).add(1, 'day').format('YYYY-MM-DD HH:mm:ss');
 
   // query db
-  Event.findAll({
+  return Event.findAll({
+    attributes: ['lat', 'long'],
     where: {
       date: {
         [Op.between]: [date, nextDate],
       },
     },
+  });
+};
+
+// fetch unpopular events
+const fetchRecommendations = (date) => {
+  // find next day
+  const nextDate = moment(date).add(1, 'day').format('YYYY-MM-DD HH:mm:ss');
+
+  // query db for unpopular event son given day
+  return Event.findAll({
+    attributes: ['img_url', 'name', 'description'],
+    where: {
+      date: {
+        [Op.between]: [date, nextDate],
+      },
+    },
+    order: [
+      ['num_people', 'ASC'],
+    ],
+    limit: 3,
   });
 };
 
@@ -100,6 +121,7 @@ sequelize
   });
 
 exports.fetchSingleDate = fetchSingleDate;
+exports.fetchRecommendations = fetchRecommendations;
 exports.deleteEvents = deleteEvents;
 exports.fetchAll = fetchAll;
 exports.addEvent = addEvent;

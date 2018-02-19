@@ -23,15 +23,26 @@ app.use(express.static('client-ang'));
 // route to load points from db for heatmap
 app.post('/heatmap', (req, res) => {
   let input = JSON.stringify(new Date(req.body.date));
+  // console.log(input); // "YYYY-MM-DDT00:00:00.000Z"
+  input = input.split('T');
+  const time = input[1].slice(0, 8);
+  const date = `${input[0].slice(1)} ${time}`;
+  // console.log(date); // YYYY-MM-DD 00:00:00
+
+  seq.fetchSingleDate(date).then(result => res.send(result));
+
+  // res.send(date);
+});
+
+app.post('/recommend', (req, res) => {
+  let input = JSON.stringify(new Date(req.body.date));
   console.log(input); // "YYYY-MM-DDT00:00:00.000Z"
   input = input.split('T');
   const time = input[1].slice(0, 8);
   const date = `${input[0].slice(1)} ${time}`;
   console.log(date); // YYYY-MM-DD 00:00:00
 
-  seq.fetchAll(date).then(result => res.send(result));
-
-  // res.send(date);
+  seq.fetchRecommendations(date).then(result => res.send(result));
 });
 
 // route for yelp api call
