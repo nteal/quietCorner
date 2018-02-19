@@ -20,6 +20,6 @@
   "dependencies": {
     "angular": "^1.6.9",
     "angularjs-datepicker": "^2.1.23",
-    "Suave UI": "suave-ui#^0.3.1"
+    "suave-ui": "^0.3.1"
   }
 }
