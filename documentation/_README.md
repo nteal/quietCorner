@@ -1,12 +1,12 @@
-# Project Name
+# Quiet Corner
 
-> Pithy project description
+> Quiet corner shows users a heatmap of events in the New Orleans, LA area and offers recommendations for uncrowded places for users to visit.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Jay Kindell
+  - __Scrum Master__: Nick Teal
+  - __Development Team Members__: Nick Teal, Jay Kindell
 
 ## Table of Contents
 
@@ -20,15 +20,12 @@
 
 ## Usage
 
-> Some usage instructions
+> Select a date on the calendar; Quiet Corner displays daily event data for the next week.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 6.11.x
+- Mysql 5.7
 
 ## Development
 
@@ -39,6 +36,10 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
+```
+
+Then navigate to the client-ang directory:
+```sh
 bower install
 ```
 
