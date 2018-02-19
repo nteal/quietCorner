@@ -5,9 +5,9 @@ const moment = require('moment');
 
 // delete old entries from db
 const deletePastEvents = new cron.CronJob({
-  cronTime: '00 00 00 * * 0-6',
+  cronTime: '00 00 00 * * *',
   onTick() {
-    seq.deleteEvents(moment().format('YYYY-MM-DD, HH:mm:ss'));
+    seq.deleteEvents(moment());
   },
   start: true,
   timeZone: 'America/Chicago',
@@ -16,7 +16,7 @@ const deletePastEvents = new cron.CronJob({
 
 // add songkick events at 1 second
 const addSongkickEvents = new cron.CronJob({
-  cronTime: '05 00 00 * * 0-6',
+  cronTime: '05 00 00 * * *',
   onTick() {
     helpers.getSongkickEvents();
   },
@@ -27,7 +27,7 @@ const addSongkickEvents = new cron.CronJob({
 
 // add yelp events at 30 seconds
 const addYelpEvents = new cron.CronJob({
-  cronTime: '30 00 00 * * 0-6',
+  cronTime: '30 00 00 * * *',
   onTick() {
     helpers.getYelpEvents();
   },
@@ -37,7 +37,7 @@ const addYelpEvents = new cron.CronJob({
 });
 
 const safetyCheck = new cron.CronJob({
-  cronTime: '00 01 00 * * 0-6',
+  cronTime: '10 * * * * *',
   onTick() {
     console.log('safety is checked');
   },
@@ -61,4 +61,4 @@ console.log('deleted old events', deletePastEvents.running);
 console.log('addSongKickEvent status', addSongkickEvents.running);
 console.log('addYelpEvent status', addYelpEvents.running);
 
-console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');

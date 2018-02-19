@@ -1,11 +1,11 @@
 require('dotenv').config();
+require('./automation');
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+// const path = require('path');
 const seq = require('../db/index');
 const helpers = require('../api-helpers/helpers');
-// const moment = require('moment');
-const request = require('request');
+// const request = require('request');
 
 
 // set PORT to correct port to listen to
@@ -45,19 +45,21 @@ app.post('/recommend', (req, res) => {
   seq.fetchRecommendations(date).then(result => res.send(result));
 });
 
-// route for yelp api call
-// helpers format & add to db
-app.get('/yelps', (req, res) => {
-  helpers.getYelpEvents();
-  res.header(200).send('ok, added yelps');
-});
+// // ******************LEAVE FOR MANUAL DB LOAD**************
 
-// route for songkick api call
-// helpers format & add to db
-app.get('/songkicks', (req, res) => {
-  helpers.getSongkickEvents();
-  res.header(200).send('ok, added kix');
-});
+// // route for yelp api call
+// // helpers format & add to db
+// app.get('/yelps', (req, res) => {
+//   helpers.getYelpEvents();
+//   res.header(200).send('ok, added yelps');
+// });
+
+// // route for songkick api call
+// // helpers format & add to db
+// app.get('/songkicks', (req, res) => {
+//   helpers.getSongkickEvents();
+//   res.header(200).send('ok, added kix');
+// });
 
 
 // listen to PORT, either environment var or 3000

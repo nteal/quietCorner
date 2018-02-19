@@ -96,7 +96,7 @@ const getYelpEvents = () => {
   request(options, (error, response, body) => {
     if (error) throw new Error(error);
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody);
+    // console.log(parsedBody);
     if (parsedBody.events.length) {
       yelpFormatForDatabase(parsedBody.events);
     }
