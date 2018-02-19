@@ -9,11 +9,11 @@ angular.module('app')
       this.heatmap = $sce.trustAsHtml('<h3>put heatmap here</h3><h3>put heatmap here</h3><h3>put heatmap here</h3><h3>put heatmap here</h3>');
       this.heatCoords = [];
 
-      let nola = new google.maps.LatLng(29.956541124848762, -90.07314188983946);
-      let map = new google.maps.Map(document.getElementById('map'), {
+      //create google maps and add to div:
+      let nola = new google.maps.LatLng(29.938389717030724, -90.09923441913634);
+      let map = new google.maps.Map(document.getElementById('newmap'), {
         center: nola,
-        zoom: 13,
-        mapTypeId: 'satellite',
+        zoom: 12.5,
       });
 
 
