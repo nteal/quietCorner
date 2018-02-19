@@ -74,7 +74,7 @@ const yelpFormatForDatabase = (resultArray) => {
       date: `${eventObj.time_start}:00`,
       name: eventObj.name,
       description: eventObj.description,
-      image_url: eventObj.image_url,
+      img_url: eventObj.image_url,
       num_people: eventObj.attending_count,
     };
     db.addEvent(formattedObj);
