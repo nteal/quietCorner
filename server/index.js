@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const seq = require('../db/index');
 const helpers = require('../api-helpers/helpers');
-// const xmlparser = require('express-xml-bodyparser');
+// const moment = require('moment');
 const request = require('request');
 
 
@@ -21,7 +21,18 @@ app.use(bodyParser.json());
 app.use(express.static('client-ang'));
 
 // route to load points from db for heatmap
-app.post('/', (req, res) => {});
+app.post('/heatmap', (req, res) => {
+  let input = JSON.stringify(new Date(req.body.date));
+  console.log(input); // "YYYY-MM-DDT00:00:00.000Z"
+  input = input.split('T');
+  const time = input[1].slice(0, 8);
+  const date = `${input[0].slice(1)} ${time}`;
+  console.log(date); // YYYY-MM-DD 00:00:00
+
+  seq.fetchAll(date).then(result => res.send(result));
+
+  // res.send(date);
+});
 
 // route for yelp api call
 // helpers format & add to db

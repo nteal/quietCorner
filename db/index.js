@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
+const moment = require('moment');
+
+moment().format();
 
 const HOST = 'localhost';
 
@@ -28,7 +31,7 @@ const Event = sequelize.define('event', {
 const { Op } = Sequelize;
 
 
-// create table if it doesn't exist
+// create table if it doesn't exists
 Event.sync();
 
 // insert new instance into table
@@ -69,6 +72,23 @@ const deleteEvents = date =>
     },
   });
 
+// fetch events for a given date
+// date format: "yyyy-mm-dd hh:mm:ss"
+
+const fetchSingleDate = (date) => {
+  // get the date of next day
+  const nextDate = moment(date).add(1, 'day').format('YYYY-MM-DD HH:mm:ss');
+
+  // query db
+  Event.findAll({
+    where: {
+      date: {
+        [Op.between]: [date, nextDate],
+      },
+    },
+  });
+};
+
 // check if sequelize connected correctly
 sequelize
   .authenticate()
@@ -79,6 +99,7 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
+exports.fetchSingleDate = fetchSingleDate;
 exports.deleteEvents = deleteEvents;
 exports.fetchAll = fetchAll;
 exports.addEvent = addEvent;

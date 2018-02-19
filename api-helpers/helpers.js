@@ -21,7 +21,7 @@ const songkickFormatForDatabase = (resultArray) => {
     const formattedEvent = {
       lat: event.venue.lat,
       long: event.venue.lng,
-      date: event.start.date,
+      date: `${event.start.date} ${event.start.time}`,
       name: event.displayName,
       description: event.type,
       num_people: event.popularity * 100,
@@ -71,7 +71,7 @@ const yelpFormatForDatabase = (resultArray) => {
       address: eventObj.location.address1,
       lat: eventObj.latitude,
       long: eventObj.longitude,
-      date: eventObj.time_start,
+      date: `${eventObj.time_start}:00`,
       name: eventObj.name,
       description: eventObj.description,
       image_url: eventObj.image_url,
