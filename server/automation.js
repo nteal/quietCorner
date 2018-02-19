@@ -8,7 +8,7 @@ const addSongkickEvents = new CronJob({
     helpers.getSongkickEvents();
   },
   start: true,
-  timeZone: 'America/Los_Angeles',
+  timeZone: 'America/Chicago',
 });
 
 // add yelp events at 30 seconds
@@ -21,9 +21,20 @@ const addYelpEvents = new CronJob({
   timeZone: 'America/Chicago',
 });
 
+const safetyCheck = new CronJob({
+  cronTime: '00 01 00 * * 0-6',
+  onTick() {
+    console.log('croning correctly');
+  },
+  start: true,
+  timeZone: 'America/Chicago',
+});
+
+
 // start jobs
 addSongkickEvents.start();
 addYelpEvents.start();
+safetyCheck.start();
 
 
 // check if jobs are running
