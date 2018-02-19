@@ -2,6 +2,7 @@ require('dotenv').config();
 const request = require('request');
 // const converter = require('xml-js');
 const db = require('../db/index.js');
+const moment = require('moment');
 
 // {
 //   address: string(anything less than 255 chars),
@@ -47,8 +48,10 @@ const getSongkickEvents = () => {
     qs: {
       apikey: `${process.env.SONGKICK_API_KEY}`,
       location: 'sk:11772',
-      min_date: `${year}-${month}-${day}`,
-      max_date: `${year}-${month}-${day}`,
+      min_date: moment().format('YYYY-MM-DD'),
+      max_date: moment().format('YYYY-MM-DD'),
+      // min_date: `${year}-${month}-${day}`,
+      // max_date: `${year}-${month}-${day}`,
     },
     headers: {
       'Cache-Control': 'no-cache',
