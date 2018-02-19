@@ -27,8 +27,6 @@
 - Node 6.11.x
 - Mysql 5.7
 
-## Development
-
 ### Installing Dependencies
 
 From within the root directory:
@@ -45,7 +43,8 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/AvocadoPower/quietCorner.svg?columns=all)](https://waffle.io/AvocadoPower/quietCorner)
 
 
 ## Contributing
