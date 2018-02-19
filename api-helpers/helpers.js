@@ -27,7 +27,9 @@ const songkickFormatForDatabase = (resultArray) => {
       description: event.type,
       num_people: event.popularity * 100,
     };
-    db.addEvent(formattedEvent);
+    db.addEvent(formattedEvent)
+      .then((save) => {console.log('saved songkick data to db')})
+      .catch((err) => {console.log('error adding songkick to db')});
   });
 };
 
@@ -70,7 +72,9 @@ const yelpFormatForDatabase = (resultArray) => {
       img_url: eventObj.image_url,
       num_people: eventObj.attending_count,
     };
-    db.addEvent(formattedObj);
+    db.addEvent(formattedObj)
+      .then((save) => {console.log('saved yelp data to db')})
+      .catch((err) => {console.log('error adding yelp to db')});;
   });
 };
 
