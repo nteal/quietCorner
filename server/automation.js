@@ -1,45 +1,49 @@
-const CronJob = require('cron').CronJob;
+const cron = require('cron');
 const helpers = require('../api-helpers/helpers');
 const seq = require('../db/index');
 const moment = require('moment');
 
 // delete old entries from db
-const deletePastEvents = new CronJob({
+const deletePastEvents = new cron.CronJob({
   cronTime: '00 00 00 * * 0-6',
   onTick() {
     seq.deleteEvents(moment().format('YYYY-MM-DD, HH:mm:ss'));
   },
   start: true,
   timeZone: 'America/Chicago',
+  runOnInit: true,
 });
 
 // add songkick events at 1 second
-const addSongkickEvents = new CronJob({
+const addSongkickEvents = new cron.CronJob({
   cronTime: '05 00 00 * * 0-6',
   onTick() {
     helpers.getSongkickEvents();
   },
   start: true,
   timeZone: 'America/Chicago',
+  runOnInit: true,
 });
 
 // add yelp events at 30 seconds
-const addYelpEvents = new CronJob({
+const addYelpEvents = new cron.CronJob({
   cronTime: '30 00 00 * * 0-6',
   onTick() {
     helpers.getYelpEvents();
   },
   start: true,
   timeZone: 'America/Chicago',
+  runOnInit: true,
 });
 
-const safetyCheck = new CronJob({
+const safetyCheck = new cron.CronJob({
   cronTime: '00 01 00 * * 0-6',
   onTick() {
-    console.log('croning correctly');
+    console.log('safety is checked');
   },
   start: true,
   timeZone: 'America/Chicago',
+  runOnInit: true,
 });
 
 
@@ -52,5 +56,9 @@ safetyCheck.start();
 
 // check if jobs are running
 
+console.log('checking safety', safetyCheck.running);
+console.log('deleted old events', deletePastEvents.running);
 console.log('addSongKickEvent status', addSongkickEvents.running);
 console.log('addYelpEvent status', addYelpEvents.running);
+
+console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
