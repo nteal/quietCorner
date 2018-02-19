@@ -32,14 +32,6 @@ const songkickFormatForDatabase = (resultArray) => {
 };
 
 const getSongkickEvents = () => {
-  const now = Date.now();
-  const date = new Date(now);
-  const day = date.getUTCDate();
-  let month = date.getUTCMonth();
-  if (month.length = 1) {
-    month = `0${month}`;
-  }
-  const year = date.getUTCFullYear();
   // console.log(`${year}-${month}-${day}`); // ok, YYYY-MM-DD
 
   const skOptions = {
@@ -49,9 +41,7 @@ const getSongkickEvents = () => {
       apikey: `${process.env.SONGKICK_API_KEY}`,
       location: 'sk:11772',
       min_date: moment().format('YYYY-MM-DD'),
-      max_date: moment().format('YYYY-MM-DD'),
-      // min_date: `${year}-${month}-${day}`,
-      // max_date: `${year}-${month}-${day}`,
+      max_date: moment().add(1, 'week').format('YYYY-MM-DD'),
     },
     headers: {
       'Cache-Control': 'no-cache',
