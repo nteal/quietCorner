@@ -32,14 +32,6 @@ const songkickFormatForDatabase = (resultArray) => {
 };
 
 const getSongkickEvents = () => {
-  const now = Date.now();
-  const date = new Date(now);
-  const day = date.getUTCDate();
-  let month = date.getUTCMonth();
-  if (month.length = 1) {
-    month = `0${month}`;
-  }
-  const year = date.getUTCFullYear();
   // console.log(`${year}-${month}-${day}`); // ok, YYYY-MM-DD
 
   const skOptions = {
