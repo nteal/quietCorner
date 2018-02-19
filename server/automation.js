@@ -16,7 +16,7 @@ const deletePastEvents = new cron.CronJob({
 
 // add songkick events at 1 second
 const addSongkickEvents = new cron.CronJob({
-  cronTime: '05 00 00 * * *',
+  cronTime: '*/05 00 00 * * *',
   onTick() {
     helpers.getSongkickEvents();
   },
@@ -27,7 +27,7 @@ const addSongkickEvents = new cron.CronJob({
 
 // add yelp events at 30 seconds
 const addYelpEvents = new cron.CronJob({
-  cronTime: '30 00 00 * * *',
+  cronTime: '*/30 00 00 * * *',
   onTick() {
     helpers.getYelpEvents();
   },
@@ -37,7 +37,7 @@ const addYelpEvents = new cron.CronJob({
 });
 
 const safetyCheck = new cron.CronJob({
-  cronTime: '10 * * * * *',
+  cronTime: '*/30 * * * * *',
   onTick() {
     console.log('safety is checked');
   },

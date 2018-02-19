@@ -3,19 +3,19 @@ const request = require('request');
 // const converter = require('xml-js');
 const db = require('../db/index.js');
 const moment = require('moment');
-
-// {
-//   address: string(anything less than 255 chars),
-//     lat: float(##.######),
-//       long: float(###.######),
-//         venue: string(can hold many characters), -- is removed
-//           date: string(yyyy - mm - dd hh: mm: ss),
-//             name: string(255 chars),
-//               description: string(many chars)
-//
-//       *****don't forget to add image url. eventObj.image_url****** DONE
-// }
-
+/*
+database schema for reference
+{
+  address: string(anything less than 255 chars),
+  lat: float(##.######),
+  long: float(###.######),
+  date: string(yyyy - mm - dd hh: mm: ss),
+  name: string(255 chars),
+  description: string(many chars),
+  num_people: int,
+  img_url: string(255 chars)
+}
+*/
 
 const songkickFormatForDatabase = (resultArray) => {
   resultArray.forEach((event) => {

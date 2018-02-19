@@ -2,10 +2,8 @@ require('dotenv').config();
 require('./automation');
 const express = require('express');
 const bodyParser = require('body-parser');
-// const path = require('path');
 const seq = require('../db/index');
 const helpers = require('../api-helpers/helpers');
-// const request = require('request');
 
 
 // set PORT to correct port to listen to
@@ -30,8 +28,6 @@ app.post('/heatmap', (req, res) => {
   // console.log(date); // YYYY-MM-DD 00:00:00
 
   seq.fetchSingleDate(date).then(result => res.send(result));
-
-  // res.send(date);
 });
 
 app.post('/recommend', (req, res) => {
@@ -60,6 +56,8 @@ app.post('/recommend', (req, res) => {
 //   helpers.getSongkickEvents();
 //   res.header(200).send('ok, added kix');
 // });
+
+// // **********************************************************
 
 
 // listen to PORT, either environment var or 3000
