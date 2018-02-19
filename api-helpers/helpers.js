@@ -49,9 +49,7 @@ const getSongkickEvents = () => {
       apikey: `${process.env.SONGKICK_API_KEY}`,
       location: 'sk:11772',
       min_date: moment().format('YYYY-MM-DD'),
-      max_date: moment().format('YYYY-MM-DD'),
-      // min_date: `${year}-${month}-${day}`,
-      // max_date: `${year}-${month}-${day}`,
+      max_date: moment().add(1, 'week').format('YYYY-MM-DD'),
     },
     headers: {
       'Cache-Control': 'no-cache',
