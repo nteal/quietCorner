@@ -29,8 +29,6 @@ angular.module('app')
               });
              })
             .catch((err) => { console.log('sorry, got an error trying to get the recommendations :/'); });
-        } else {
-          console.log('looks like your selected date is not a date :/');
         }
       });
     },
