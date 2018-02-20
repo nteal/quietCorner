@@ -98,7 +98,7 @@ const fetchRecommendations = (date) => {
 
   // query db for unpopular event son given day
   return Event.findAll({
-    attributes: ['img_url', 'name', 'description'],
+    attributes: ['img_url', 'name', 'description', 'event_link'],
     where: {
       date: {
         [Op.between]: [date, nextDate],

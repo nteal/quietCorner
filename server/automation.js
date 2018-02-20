@@ -37,7 +37,7 @@ const addYelpEvents = new cron.CronJob({
 });
 
 const safetyCheck = new cron.CronJob({
-  cronTime: '*/30 * * * * *',
+  cronTime: '00 05 * * * *',
   onTick() {
     console.log('safety is checked');
   },
