@@ -3,7 +3,11 @@
     <img ng-src="{{$ctrl.checkImage($ctrl.image)}}" style="width:100%;  height:auto">
   </div> -->
   <div style="width:100%; height:190px; overflow:auto">
-    <h3 style="margin-top: 30px">{{$ctrl.name}}</h3>
+    <a href="{{$ctrl.link}}" style="margin-top: 30px">
+      <h3>
+          {{$ctrl.name}}
+      </h3>
+    </a>
   </div>
   <h4 style="margin-bottom: 0px; margin-top: 10px">Description: </h4>
   <div style="overflow: auto; height: 150px">
