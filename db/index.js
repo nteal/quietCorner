@@ -26,6 +26,7 @@ const Event = sequelize.define('event', {
   description: Sequelize.TEXT,
   num_people: Sequelize.INTEGER,
   img_url: Sequelize.STRING,
+  event_link: Sequelize.STRING,
 });
 
 const { Op } = Sequelize;
