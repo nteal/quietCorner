@@ -4,6 +4,7 @@ angular.module('app')
       image: '<',
       name: '<',
       description: '<',
+      link: '<'
     },
     controller() {
       //display 'image not found' if image value is null

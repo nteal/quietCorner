@@ -4,7 +4,7 @@ angular.module('app')
       selectedDate: '<',
     },
     // TODO: delete dummy data from dependencies (and everywhere else)
-    controller($scope, $http, dummyData) {
+    controller($scope, $http, $sce) {
       const recommendsMod = this;
 
       this.name = 'name';
@@ -26,10 +26,10 @@ angular.module('app')
             .then((response) => { 
               console.log('recommends data is:', response.data);
               this.recommendsArr = response.data.map((recommend) => {
-                return {image: recommend.img_url, name: recommend.name, description: recommend.description}
+                return {image: recommend.img_url, name: recommend.name, description: recommend.description, link: $sce.trustAsUrl(recommend.event_link)};
               });
              })
-            .catch((err) => { console.log('sorry, got an error trying to get the recommendations :/'); });
+            .catch((err) => { console.log('sorry, got an error trying to get the recommendations :/', err); });
 
           // TODO: delete following two lines:
           // this.recommendsArr = dummyData.slice(0, 3);
