@@ -3,19 +3,19 @@ const request = require('request');
 // const converter = require('xml-js');
 const db = require('../db/index.js');
 const moment = require('moment');
-
-// {
-//   address: string(anything less than 255 chars),
-//     lat: float(##.######),
-//       long: float(###.######),
-//         venue: string(can hold many characters), -- is removed
-//           date: string(yyyy - mm - dd hh: mm: ss),
-//             name: string(255 chars),
-//               description: string(many chars)
-//
-//       *****don't forget to add image url. eventObj.image_url****** DONE
-// }
-
+/*
+database schema for reference
+{
+  address: string(anything less than 255 chars),
+  lat: float(##.######),
+  long: float(###.######),
+  date: string(yyyy - mm - dd hh: mm: ss),
+  name: string(255 chars),
+  description: string(many chars),
+  num_people: int,
+  img_url: string(255 chars)
+}
+*/
 
 const songkickFormatForDatabase = (resultArray) => {
   resultArray.forEach((event) => {
@@ -28,19 +28,13 @@ const songkickFormatForDatabase = (resultArray) => {
       num_people: event.popularity * 100,
       event_link: event.uri,
     };
-    db.addEvent(formattedEvent);
+    db.addEvent(formattedEvent)
+      .then((save) => {console.log('saved songkick data to db')})
+      .catch((err) => {console.log('error adding songkick to db')});
   });
 };
 
 const getSongkickEvents = () => {
-  const now = Date.now();
-  const date = new Date(now);
-  const day = date.getUTCDate();
-  let month = date.getUTCMonth();
-  if (month.length = 1) {
-    month = `0${month}`;
-  }
-  const year = date.getUTCFullYear();
   // console.log(`${year}-${month}-${day}`); // ok, YYYY-MM-DD
 
   const skOptions = {
@@ -50,9 +44,7 @@ const getSongkickEvents = () => {
       apikey: `${process.env.SONGKICK_API_KEY}`,
       location: 'sk:11772',
       min_date: moment().format('YYYY-MM-DD'),
-      max_date: moment().format('YYYY-MM-DD'),
-      // min_date: `${year}-${month}-${day}`,
-      // max_date: `${year}-${month}-${day}`,
+      max_date: moment().add(1, 'week').format('YYYY-MM-DD'),
     },
     headers: {
       'Cache-Control': 'no-cache',
@@ -82,7 +74,9 @@ const yelpFormatForDatabase = (resultArray) => {
       num_people: eventObj.attending_count,
       event_link: eventObj.event_site_url,
     };
-    db.addEvent(formattedObj);
+    db.addEvent(formattedObj)
+      .then((save) => {console.log('saved yelp data to db')})
+      .catch((err) => {console.log('error adding yelp to db')});;
   });
 };
 
@@ -108,7 +102,7 @@ const getYelpEvents = () => {
   request(options, (error, response, body) => {
     if (error) throw new Error(error);
     const parsedBody = JSON.parse(body);
-    console.log(parsedBody);
+    // console.log(parsedBody);
     if (parsedBody.events.length) {
       yelpFormatForDatabase(parsedBody.events);
     }

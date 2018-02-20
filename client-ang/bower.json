@@ -2,7 +2,9 @@
   "name": "quietCorner",
   "homepage": "https://github.com/nteal/immersion-2018-01-greenfield",
   "authors": [
-    "Jay Kindell <jaykindell@gmail.com>", "Erik McCoy <tknbnola@gmail.com>", "Nicholas Teal <nteal15@gmail.com>"
+    "Jay Kindell <jaykindell@gmail.com>",
+    "Erik McCoy <tknbnola@gmail.com>",
+    "Nicholas Teal <nteal15@gmail.com>"
   ],
   "description": "a way to get away",
   "main": "",
@@ -16,6 +18,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.9"
+    "angular": "^1.6.9",
+    "angularjs-datepicker": "^2.1.23",
+    "suave-ui": "^0.3.1"
   }
 }
