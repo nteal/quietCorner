@@ -2,7 +2,7 @@
   <h2 style="margin-top: 20px">Recommendations</h2>
   <div ng-repeat="recommendation in $ctrl.recommendsArr" class="{{$ctrl.getGridWidth($index)}}">
     <div class="su-box">
-      <recommend image="recommendation.image" name="recommendation.name" description="recommendation.description"></recommend>
+      <recommend image="recommendation.image" name="recommendation.name" description="recommendation.description" link="recommendation.link"></recommend>
     </div>
   </div>
 </div>
