@@ -7,7 +7,7 @@ const helpers = require('../api-helpers/helpers');
 
 
 // set PORT to correct port to listen to
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 const app = express();
 
 // get some sweet bodyParser action
